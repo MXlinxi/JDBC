@@ -9,6 +9,7 @@
  */
 public class Demo1 {
     public static void main(String[] args) {
+
         try {
             Class.forName("Demo1.Driver");
         } catch (ClassNotFoundException e) {
