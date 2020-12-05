@@ -20,7 +20,7 @@ public class Demo1 {
         String url = bundle.getString("url");
         String user = bundle.getString("user");
         String password = bundle.getString("password");
-        Connection conn = null;
+        Connection connectionection = null;
         //Statement statement = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -31,13 +31,13 @@ public class Demo1 {
             Class.forName(driver);
 
             //2.获取连接(使用资源绑定器）
-            conn = DriverManager.getConnection(url, user, password);
+            connectionection = DriverManager.getConnection(url, user, password);
 
             //3.写带有占位符的SQL语句
             String sql = "select * from airport where oa=?";
 
             //4.获取预编译的数据库操作对象
-            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement = connectionection.prepareStatement(sql);
 
             //5.传值,第一个参数是占位符的下标，第二个是要传的值
             preparedStatement.setString(1, oa);
@@ -55,7 +55,7 @@ public class Demo1 {
 
             /*3.获取数据库操作对象
             解决SQL注入问题:让用户提供的信息不参与SQL语句的编译过程
-            statement = conn.createStatement();
+            statement = connectionection.createStatement();
 
             4.执行sql语句（jdbc中sql语句不需要写分号）
             String sql = "select * from airport where oa='zhangsan'";
@@ -81,19 +81,19 @@ public class Demo1 {
             e.printStackTrace();
         } finally {
             //6.关闭资源
-            if (conn != null) {
+            if (connectionection != null) {
                 try {
-                    conn.close();
+                    connectionection.close();
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
-                if (preparedStatement != null) {
+            if (preparedStatement != null) {
                     try {
                         preparedStatement.close();
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
                     }
-                    if (resultSet != null) {
+            if (resultSet != null) {
                         try {
                             resultSet.close();
                         } catch (SQLException throwables) {
