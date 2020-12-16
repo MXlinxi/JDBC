@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
  * 6.URL：统一资源定位符，包括协议、IP地址、端口号、资源名
  * 7.案例表中的字段：oa(string)\technicalLever(string)\airport(string)\time(date)
  */
-public class Demo1 {
+public class Demo01 {
     public static void main(String[] args) {
         //获取资源绑定器
         ResourceBundle bundle = ResourceBundle.getBundle("jdbc");
